@@ -2,7 +2,6 @@
 //  SceneDelegate.swift
 //  IMDUMB
 //
-//  Created by Julio Alexis Arteaga Morales on 3/02/26.
 //
 
 import UIKit
@@ -13,10 +12,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        
+        // Configurar el window
+        let window = UIWindow(windowScene: windowScene)
+        
+        // Crear Splash Screen con MVP
+        let splashVC = SplashViewController.loadFromNib()
+        let dataStore = DataStoreFactory.makeDataStore()
+        let configRepository = ConfigRepositoryImpl(dataStore: dataStore)
+        let interactor = SplashInteractor(configRepository: configRepository)
+        let presenter = SplashPresenter(view: splashVC, interactor: interactor)
+        
+        splashVC.presenter = presenter
+        
+        // Establecer como root
+        window.rootViewController = splashVC
+        window.makeKeyAndVisible()
+        self.window = window
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

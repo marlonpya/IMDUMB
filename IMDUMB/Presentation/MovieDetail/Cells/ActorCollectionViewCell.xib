@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="actor-cell" customClass="ActorCollectionViewCell" customModule="IMDUMB" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="80" height="120"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="80" height="120"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="profile-img">
+                        <rect key="frame" x="10" y="8" width="60" height="60"/>
+                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="60" id="img-width"/>
+                            <constraint firstAttribute="height" constant="60" id="img-height"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Actor Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="name-lbl">
+                        <rect key="frame" x="4" y="76" width="72" height="28"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="actor-safe"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="profile-img" firstAttribute="top" secondItem="actor-cell" secondAttribute="top" constant="8" id="c1"/>
+                <constraint firstItem="profile-img" firstAttribute="centerX" secondItem="actor-cell" secondAttribute="centerX" id="c2"/>
+                <constraint firstItem="name-lbl" firstAttribute="top" secondItem="profile-img" secondAttribute="bottom" constant="8" id="c3"/>
+                <constraint firstItem="name-lbl" firstAttribute="leading" secondItem="actor-cell" secondAttribute="leading" constant="4" id="c4"/>
+                <constraint firstItem="name-lbl" firstAttribute="trailing" secondItem="actor-cell" secondAttribute="trailing" constant="-4" id="c5"/>
+                <constraint firstItem="actor-cell" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="name-lbl" secondAttribute="bottom" constant="8" id="c6"/>
+            </constraints>
+            <connections>
+                <outlet property="nameLabel" destination="name-lbl" id="outlet-name"/>
+                <outlet property="profileImageView" destination="profile-img" id="outlet-profile"/>
+            </connections>
+            <size key="customSize" width="80" height="120"/>
+            <point key="canvasLocation" x="79" y="82"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

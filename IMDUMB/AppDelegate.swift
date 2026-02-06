@@ -2,10 +2,10 @@
 //  AppDelegate.swift
 //  IMDUMB
 //
-//  Created by Julio Alexis Arteaga Morales on 3/02/26.
 //
 
 import UIKit
+import FirebaseCore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -13,7 +13,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        // Imprimir información del entorno
+        DataStoreFactory.printEnvironmentInfo()
+        
+        #if !DEV
+        FirebaseApp.configure()
+        print("[AppDelegate] Firebase initialized successfully")
+        #else
+        print("[AppDelegate] Firebase NOT initialized (DEV mode - using MockDataStore)")
+        #endif
+        
         return true
     }
 
